@@ -20,8 +20,8 @@ import com.badlogic.gdx.utils.TimeUtils;
 public class GameScreen implements Screen {
     final Shooter game;
 
-    int ScreenWidth = 800;
-    int ScreenHeight = 480;
+    static int ScreenWidth = 800;
+    static int ScreenHeight = 480;
     int PlayerWidth = 64;
     int PlayerHeight = 64;
     Texture FriendImage;
@@ -29,8 +29,8 @@ public class GameScreen implements Screen {
     Sound BulletHit;
     Music BackgroundMusic;
     OrthographicCamera camera;
-    Array<Player> Players;
-    Array<bullet> bullets;
+    static Array<Player> Players;
+    static Array<bullet> bullets;
     Vector3 touchPos;
     Player FriendPlayer;
     final int maxEnemies = 10;
@@ -165,13 +165,6 @@ public class GameScreen implements Screen {
                     somePlayer.explode();
                     // iter.remove();
                     iter2.remove();
-                    for(int i = 0; i < 5; i++) {
-                        float xPos = MathUtils.random(0, ScreenWidth);
-                        float yPos = MathUtils.random(0, ScreenHeight);
-                        bullet particle = new bullet( curBullet.getRect().x, curBullet.getRect().y, xPos, yPos, "particle" );
-                        bullets.add(particle);
-                    }
-
                 }
             }
         }

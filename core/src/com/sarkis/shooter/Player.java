@@ -1,9 +1,17 @@
 package com.sarkis.shooter;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Array;
+import com.sarkis.shooter.GameScreen;
+
+import static com.sarkis.shooter.GameScreen.ScreenHeight;
+import static com.sarkis.shooter.GameScreen.ScreenWidth;
+import static com.sarkis.shooter.GameScreen.bullets;
 
 
 public class Player {
@@ -62,6 +70,13 @@ public class Player {
     // friendly player does not explode
     public void explode() {
         BulletHit.play();
+        for(int i = 0; i < 5; i++) {
+            float xPos = MathUtils.random(0, ScreenWidth);
+            float yPos = MathUtils.random(0, ScreenHeight);
+            bullet particle = new bullet( this.getRect().x, this.getRect().y, xPos, yPos, "particle" );
+            bullets.add(particle);
+        }
+
     }
 
 
